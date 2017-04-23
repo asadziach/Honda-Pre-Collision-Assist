@@ -31,7 +31,7 @@ import android.media.ImageReader;
 import android.media.ImageReader.OnImageAvailableListener;
 import android.os.SystemClock;
 import android.os.Trace;
-import android.util.Size;
+import android.graphics.Point;
 import android.util.TypedValue;
 import android.view.Display;
 import java.util.LinkedList;
@@ -83,7 +83,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
   private static final boolean MAINTAIN_ASPECT = USE_YOLO;
 
-  private static final Size DESIRED_PREVIEW_SIZE = new Size(640, 480);
+  private static final Point DESIRED_PREVIEW_SIZE = new Point(640, 480);
 
   private static final boolean SAVE_PREVIEW_BITMAP = false;
   private static final float TEXT_SIZE_DIP = 10;
@@ -117,7 +117,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
   private long lastProcessingTimeMs;
 
   @Override
-  public void onPreviewSizeChosen(final Size size, final int rotation) {
+  public void onPreviewSizeChosen(final Point size, final int rotation) {
     final float textSizePx =
         TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP, TEXT_SIZE_DIP, getResources().getDisplayMetrics());
@@ -148,8 +148,8 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
               MB_OUTPUT_SCORES_NAME);
     }
 
-    previewWidth = size.getWidth();
-    previewHeight = size.getHeight();
+    previewWidth = size.x;
+    previewHeight = size.y;
 
     final Display display = getWindowManager().getDefaultDisplay();
     final int screenOrientation = display.getRotation();
@@ -351,7 +351,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
   }
 
   @Override
-  protected Size getDesiredPreviewFrameSize() {
+  protected Point getDesiredPreviewFrameSize() {
     return DESIRED_PREVIEW_SIZE;
   }
 
