@@ -45,7 +45,7 @@ import java.util.List;
  *
  * <p>Instances of a Session are thread-safe.
  */
-public final class Session implements AutoCloseable {
+public final class Session {
 
   /** Construct a new session with the associated {@link Graph}. */
   public Session(Graph g) {
@@ -88,6 +88,9 @@ public final class Session implements AutoCloseable {
    * is not usable after close returns.
    */
   @Override
+  protected void finalize() throws Throwable {
+    close();
+  }
   public void close() {
     graphRef.close();
     synchronized (nativeHandleLock) {
@@ -305,7 +308,7 @@ public final class Session implements AutoCloseable {
             t.close();
           }
           outputs.clear();
-          throw e;
+          //throw e;
         }
       }
       Run ret = new Run();
@@ -314,7 +317,7 @@ public final class Session implements AutoCloseable {
       return ret;
     }
 
-    private class Reference implements AutoCloseable {
+    private class Reference {
       public Reference() {
         synchronized (nativeHandleLock) {
           if (nativeHandle == 0) {
@@ -325,6 +328,9 @@ public final class Session implements AutoCloseable {
       }
 
       @Override
+      protected void finalize() throws Throwable {
+        close();
+      }
       public void close() {
         synchronized (nativeHandleLock) {
           if (nativeHandle == 0) {

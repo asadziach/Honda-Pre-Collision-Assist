@@ -23,7 +23,7 @@ package org.tensorflow;
  * <p><b>WARNING:</b> Resources consumed by the Graph object msut be explicitly freed by invoking
  * the {@link #close()} method then the Graph object is no longer needed.
  */
-public final class Graph implements AutoCloseable {
+public final class Graph {
 
   /** Create an empty Graph. */
   public Graph() {
@@ -42,6 +42,9 @@ public final class Graph implements AutoCloseable {
    * is not usable after close returns.
    */
   @Override
+  protected void finalize() throws Throwable {
+    close();
+  }
   public void close() {
     synchronized (nativeHandleLock) {
       if (nativeHandle == 0) {
@@ -141,7 +144,7 @@ public final class Graph implements AutoCloseable {
   //
   // Instances of the Reference class should be used to ensure the Graph has not been closed
   // while dependent handles are in use.
-  class Reference implements AutoCloseable {
+  class Reference {
     private Reference() {
       synchronized (Graph.this.nativeHandleLock) {
         active = Graph.this.nativeHandle != 0;
@@ -154,6 +157,9 @@ public final class Graph implements AutoCloseable {
     }
 
     @Override
+    protected void finalize() throws Throwable {
+      close();
+    }
     public void close() {
       synchronized (Graph.this.nativeHandleLock) {
         if (!active) {

@@ -17,7 +17,6 @@ package org.tensorflow.demo;
 
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
-import android.os.Trace;
 import android.util.Log;
 import java.io.BufferedReader;
 import java.io.IOException;

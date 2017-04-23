@@ -19,9 +19,6 @@ package org.tensorflow.demo;
 import android.Manifest;
 import android.app.Activity;
 import android.app.Fragment;
-import android.content.pm.PackageManager;
-import android.media.Image.Plane;
-import android.media.ImageReader.OnImageAvailableListener;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -32,9 +29,10 @@ import android.view.WindowManager;
 import android.widget.Toast;
 import java.nio.ByteBuffer;
 import org.tensorflow.demo.env.Logger;
+import android.hardware.Camera;
 import org.tensorflow.demo.R;
 
-public abstract class CameraActivity extends Activity implements OnImageAvailableListener {
+public abstract class CameraActivity extends Activity implements Camera.PreviewCallback {
   private static final Logger LOGGER = new Logger();
 
   private static final int PERMISSIONS_REQUEST = 1;
@@ -46,6 +44,7 @@ public abstract class CameraActivity extends Activity implements OnImageAvailabl
 
   private Handler handler;
   private HandlerThread handlerThread;
+
 
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
@@ -87,7 +86,7 @@ public abstract class CameraActivity extends Activity implements OnImageAvailabl
       finish();
     }
 
-    handlerThread.quitSafely();
+    handlerThread.quit();
     try {
       handlerThread.join();
       handlerThread = null;
@@ -128,24 +127,15 @@ public abstract class CameraActivity extends Activity implements OnImageAvailabl
   }
 
   protected void setFragment() {
-    final Fragment fragment =
-        CameraConnectionFragment.newInstance(
-            new CameraConnectionFragment.ConnectionCallback() {
-              @Override
-              public void onPreviewSizeChosen(final Point size, final int rotation) {
-                CameraActivity.this.onPreviewSizeChosen(size, rotation);
-              }
-            },
-            this,
-            getLayoutId(),
-            getDesiredPreviewFrameSize());
+    final Fragment fragment = new LegacyCameraConnectionFragment(
+            this, getLayoutId());
 
     getFragmentManager()
         .beginTransaction()
         .replace(R.id.container, fragment)
         .commit();
   }
-
+/*
   protected void fillBytes(final Plane[] planes, final byte[][] yuvBytes) {
     // Because of the variable row stride it's not possible to know in
     // advance the actual necessary dimensions of the yuv planes.
@@ -155,10 +145,10 @@ public abstract class CameraActivity extends Activity implements OnImageAvailabl
         LOGGER.d("Initializing buffer %d at size %d", i, buffer.capacity());
         yuvBytes[i] = new byte[buffer.capacity()];
       }
-      buffer.get(yuvBytes[i]);
+      buffer.get(yuvBytes[i]);+
     }
   }
-
+*/
   public boolean isDebug() {
     return debug;
   }

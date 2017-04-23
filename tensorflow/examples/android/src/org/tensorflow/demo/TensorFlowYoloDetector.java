@@ -18,7 +18,6 @@ package org.tensorflow.demo;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.RectF;
-import android.os.Trace;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;

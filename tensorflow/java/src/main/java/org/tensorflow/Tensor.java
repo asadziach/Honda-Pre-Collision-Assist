@@ -41,7 +41,7 @@ import java.util.Arrays;
  * }
  * }</pre>
  */
-public final class Tensor implements AutoCloseable {
+public final class Tensor {
 
   /**
    * Create a Tensor from a Java object.
@@ -228,6 +228,9 @@ public final class Tensor implements AutoCloseable {
    * <p>The Tensor object is no longer usable after {@code close} returns.
    */
   @Override
+  protected void finalize() throws Throwable {
+    close();
+  }
   public void close() {
     if (nativeHandle != 0) {
       delete(nativeHandle);

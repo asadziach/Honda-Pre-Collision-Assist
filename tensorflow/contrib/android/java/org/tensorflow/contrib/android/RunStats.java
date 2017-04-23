@@ -16,7 +16,7 @@ limitations under the License.
 package org.tensorflow.contrib.android;
 
 /** Accumulate and analyze stats from metadata obtained from Session.Runner.run. */
-public class RunStats implements AutoCloseable {
+public class RunStats {
 
   /**
    * Options to be provided to a {@link org.tensorflow.Session.Runner} to enable stats accumulation.
@@ -30,6 +30,9 @@ public class RunStats implements AutoCloseable {
   }
 
   @Override
+  protected void finalize() throws Throwable {
+    close();
+  }
   public void close() {
     if (nativeHandle != 0) {
       delete(nativeHandle);

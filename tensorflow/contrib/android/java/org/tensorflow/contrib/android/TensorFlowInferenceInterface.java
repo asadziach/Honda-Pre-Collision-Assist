@@ -16,7 +16,6 @@ limitations under the License.
 package org.tensorflow.contrib.android;
 
 import android.content.res.AssetManager;
-import android.os.Trace;
 import android.text.TextUtils;
 import android.util.Log;
 import java.io.FileInputStream;
@@ -34,6 +33,8 @@ import org.tensorflow.Operation;
 import org.tensorflow.Session;
 import org.tensorflow.Tensor;
 import org.tensorflow.TensorFlow;
+
+import org.tensorflow.demo.Trace;
 
 /**
  * Wrapper over the TensorFlow API ({@link Graph}, {@link Session}) providing a smaller API surface

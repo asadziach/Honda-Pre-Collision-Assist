@@ -24,7 +24,7 @@ package org.tensorflow;
  * href="https://www.tensorflow.org/code/tensorflow/core/protobuf/meta_graph.proto">MetaGraphDef
  * protocol buffer</a>).
  */
-public class SavedModelBundle implements AutoCloseable {
+public class SavedModelBundle {
 
   /**
    * Load a saved model from an export directory. The model that is being loaded should be created using
@@ -66,7 +66,7 @@ public class SavedModelBundle implements AutoCloseable {
    * bundle.
    */
   @Override
-  public void close() {
+  protected void finalize() throws Throwable {
     session.close();
     graph.close();
   }
