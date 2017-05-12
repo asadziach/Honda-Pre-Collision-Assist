@@ -49,7 +49,7 @@ import org.tensorflow.demo.R;
  * An activity that uses a TensorFlowMultiBoxDetector and ObjectTracker to detect and then track
  * objects.
  */
-public class DetectorActivity extends CameraActivity implements OnImageAvailableListener {
+public class DetectorActivity extends CameraActivity implements OnImageAvailableListener, MqttCallback {
   private static final Logger LOGGER = new Logger();
 
   // Configuration values for the prepackaged multibox model.
@@ -123,8 +123,12 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    mNetworkFragment = NetworkFragment.getInstance(getFragmentManager(), "https://www.google.com");
-    mNetworkFragment.startDownload();
+    mNetworkFragment = NetworkFragment.getInstance(getFragmentManager(), "tcp://192.168.43.78:1883");
+  }
+
+  @Override
+  public void messageReceived(String message){
+
   }
 
   @Override
