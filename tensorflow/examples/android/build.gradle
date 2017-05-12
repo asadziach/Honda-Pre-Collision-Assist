@@ -65,6 +65,23 @@ buildscript {
 
 apply plugin: 'com.android.application'
 
+repositories {
+    jcenter()
+}
+
+repositories {
+    maven {
+        url "https://repo.eclipse.org/content/repositories/paho-snapshots/"
+    }
+}
+
+
+dependencies {
+    compile "com.android.support:support-v4:25.0.1"
+    compile 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'
+    compile 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
+}
+
 android {
     compileSdkVersion 23
     buildToolsVersion "25.0.2"

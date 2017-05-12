@@ -29,6 +29,7 @@ import android.media.Image;
 import android.media.Image.Plane;
 import android.media.ImageReader;
 import android.media.ImageReader.OnImageAvailableListener;
+import android.os.Bundle;
 import android.os.SystemClock;
 import android.os.Trace;
 import android.util.Size;
@@ -115,6 +116,16 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
   private BorderedText borderedText;
 
   private long lastProcessingTimeMs;
+
+  private NetworkFragment mNetworkFragment;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+
+    mNetworkFragment = NetworkFragment.getInstance(getFragmentManager(), "https://www.google.com");
+    mNetworkFragment.startDownload();
+  }
 
   @Override
   public void onPreviewSizeChosen(final Size size, final int rotation) {
