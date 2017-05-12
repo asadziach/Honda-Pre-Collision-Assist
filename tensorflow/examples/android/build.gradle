@@ -44,7 +44,7 @@ def makeNdkRoot = System.getenv('NDK_ROOT')
 // If building with Bazel, this is the location of the bazel binary.
 // NOTE: Bazel does not yet support building for Android on Windows,
 // so in this case the Makefile build must be used as described above.
-def bazelLocation = '/usr/local/bin/bazel'
+def bazelLocation = '/usr/bin/bazel'
 
 project.buildDir = 'gradleBuild'
 getProject().setBuildDir('gradleBuild')
@@ -59,7 +59,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.0'
+        classpath 'com.android.tools.build:gradle:2.3.2'
     }
 }
 
@@ -83,7 +83,7 @@ dependencies {
 }
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 25
     buildToolsVersion "25.0.2"
 
     lintOptions {
