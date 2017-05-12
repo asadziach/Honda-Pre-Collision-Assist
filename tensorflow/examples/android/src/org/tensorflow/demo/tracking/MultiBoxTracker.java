@@ -31,6 +31,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import org.tensorflow.demo.Classifier.Recognition;
+import org.tensorflow.demo.HazardDetector;
 import org.tensorflow.demo.env.BorderedText;
 import org.tensorflow.demo.env.ImageUtils;
 import org.tensorflow.demo.env.Logger;
@@ -58,7 +59,7 @@ public class MultiBoxTracker {
   private static final float MIN_CORRELATION = 0.3f;
 
   private static final int[] COLORS = {
-    Color.BLUE, Color.RED, Color.GREEN, Color.YELLOW, Color.CYAN, Color.MAGENTA
+    Color.BLUE, Color.GREEN, Color.YELLOW, Color.CYAN, Color.MAGENTA
   };
 
   private final Queue<Integer> availableColors = new LinkedList<Integer>();
@@ -172,7 +173,11 @@ public class MultiBoxTracker {
 
       final RectF trackedPos = trackedObject.getTrackedPositionInPreviewFrame();
       getFrameToCanvasMatrix().mapRect(trackedPos);
-      boxPaint.setColor(recognition.color);
+      int recognitionColor = recognition.color;
+      if(HazardDetector.isHazard(trackedPos.centerY(), frameWidth * multiplier)){
+        recognitionColor = Color.RED;
+      }
+      boxPaint.setColor(recognitionColor);
 
       final float cornerSize = Math.min(trackedPos.width(), trackedPos.height()) / 8.0f;
       canvas.drawRoundRect(trackedPos, cornerSize, cornerSize, boxPaint);

@@ -128,7 +128,9 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
   @Override
   public void messageReceived(String message){
-
+      if(message !=null){
+        HazardDetector.walabotDetection(Float.parseFloat(message));
+      }
   }
 
   @Override
