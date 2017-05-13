@@ -343,12 +343,24 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
             for (final Classifier.Recognition result : results) {
               final RectF location = result.getLocation();
-              if (location != null && result.getConfidence() >= MINIMUM_CONFIDENCE && result.getTitle().equals("person")) {
-                canvas.drawRect(location, paint);
+              if (location != null && result.getConfidence() >= MINIMUM_CONFIDENCE ) {
+                switch (result.getTitle()) {
+                  case "person":
+                  case "bicycle":
+                  case "bus":
+                  case "car":
+                  case "motorbike":
+                    canvas.drawRect(location, paint);
 
-                cropToFrameTransform.mapRect(location);
-                result.setLocation(location);
-                mappedRecognitions.add(result);
+                    cropToFrameTransform.mapRect(location);
+                    result.setLocation(location);
+                    mappedRecognitions.add(result);
+                    
+                    break;
+                  default:
+                    //Ignore everything else for now.
+                    break;
+                }
               }
             }
 
