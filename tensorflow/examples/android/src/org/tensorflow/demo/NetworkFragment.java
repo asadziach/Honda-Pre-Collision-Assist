@@ -43,7 +43,7 @@ import javax.net.ssl.HttpsURLConnection;
 /**
  * Implementation of headless Fragment that runs an AsyncTask to fetch data from the network.
  */
-public class NetworkFragment extends Fragment {
+public class NetworkFragment extends Fragment implements MqttPublish{
     public static final String TAG = "NetworkFragment";
 
     private static final String URL_KEY = "UrlKey";
@@ -58,6 +58,7 @@ public class NetworkFragment extends Fragment {
 
     String clientId = "TensorFlowPedestrianDetection";
     final String subscriptionTopic = "walabot";
+    final String alertTopic = "walabot/alert";
 
     /**
      * Static initializer for NetworkFragment that sets the URL of the host it will be downloading
@@ -203,6 +204,16 @@ public class NetworkFragment extends Fragment {
                 }
             });
 
+        } catch (MqttException ex){
+            System.err.println("Exception whilst subscribing");
+            ex.printStackTrace();
+        }
+    }
+
+    @Override
+    public void messagePublish(String message) {
+        try {
+            mqttAndroidClient.publish(alertTopic, new MqttMessage(message.getBytes()));
         } catch (MqttException ex){
             System.err.println("Exception whilst subscribing");
             ex.printStackTrace();

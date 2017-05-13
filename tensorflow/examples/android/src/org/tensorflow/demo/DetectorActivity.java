@@ -123,7 +123,8 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    mNetworkFragment = NetworkFragment.getInstance(getFragmentManager(), "tcp://192.168.43.78:1883");
+    mNetworkFragment = NetworkFragment.getInstance(getFragmentManager(), null); //"tcp://192.168.43.78:1883"
+    HazardDetector.registerPublisher(mNetworkFragment);
   }
 
   @Override
