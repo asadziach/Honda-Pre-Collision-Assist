@@ -34,7 +34,7 @@ def PedestrianDetect():
 
     mqttc = mqtt.Client()
     #defaults to local host
-    mqttc.connect("localhost")
+    mqttc.connect("192.168.43.52")
     mqttc.loop_start()
 
     # input parameters found by Trial and Error

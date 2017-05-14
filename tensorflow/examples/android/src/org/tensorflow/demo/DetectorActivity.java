@@ -123,7 +123,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    mNetworkFragment = NetworkFragment.getInstance(getFragmentManager(), null); //"tcp://192.168.43.78:1883"
+    mNetworkFragment = NetworkFragment.getInstance(getFragmentManager(), "tcp://192.168.43.52:1883"); //
     HazardDetector.registerPublisher(mNetworkFragment);
   }
 
@@ -355,7 +355,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                     cropToFrameTransform.mapRect(location);
                     result.setLocation(location);
                     mappedRecognitions.add(result);
-                    
+
                     break;
                   default:
                     //Ignore everything else for now.
