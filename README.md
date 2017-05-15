@@ -5,7 +5,7 @@
 
 **[Pre-Collision Assist with Pedestrian Detection - Honda Civic](https://www.hackster.io/asadzia/pre-collision-assist-with-pedestrian-detection-honda-civic-db91cb)**
 
-Combine real-time hazard detection and classification from Camera with Walabot's RF radar, powered by TensorFlow with YOLO approach.
+Combine real-time hazard detection and classification from Camera with [Walabot](https://walabot.com/) RF radar, powered by TensorFlow with YOLO approach.
 
 -----------------
 
