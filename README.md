@@ -1,70 +1,134 @@
 <div align="center">
-  <img src="https://www.tensorflow.org/images/tf_logo_transp.png"><br><br>
+  <img src="https://hackster.imgix.net/uploads/attachments/303966/slide2_a8X7ZX2dvn.PNG"><br><br>
 </div>
+
+
+**[Pre-Collision Assist with Pedestrian Detection - Honda Civic](https://www.hackster.io/asadzia/pre-collision-assist-with-pedestrian-detection-honda-civic-db91cb)**
+
+Combine real-time hazard detection and classification from Camera with Walabot's RF radar, powered by TensorFlow with YOLO approach.
 
 -----------------
 
-| **`Linux CPU`** | **`Linux GPU`** | **`Mac OS CPU`** | **`Windows CPU`** | **`Android`** |
-|-----------------|---------------------|------------------|-------------------|---------------|
-| [![Build Status](https://ci.tensorflow.org/buildStatus/icon?job=tensorflow-master-cpu)](https://ci.tensorflow.org/job/tensorflow-master-cpu) | [![Build Status](https://ci.tensorflow.org/buildStatus/icon?job=tensorflow-master-linux-gpu)](https://ci.tensorflow.org/job/tensorflow-master-linux-gpu) | [![Build Status](https://ci.tensorflow.org/buildStatus/icon?job=tensorflow-master-mac)](https://ci.tensorflow.org/job/tensorflow-master-mac) | [![Build Status](https://ci.tensorflow.org/buildStatus/icon?job=tensorflow-master-win-cmake-py)](https://ci.tensorflow.org/job/tensorflow-master-win-cmake-py) | [![Build Status](https://ci.tensorflow.org/buildStatus/icon?job=tensorflow-master-android)](https://ci.tensorflow.org/job/tensorflow-master-android) |
+|## Building the Android Applictaion from Source
 
-**TensorFlow** is an open source software library for numerical computation using
-data flow graphs.  Nodes in the graph represent mathematical operations, while
-the graph edges represent the multidimensional data arrays (tensors) that flow
-between them.  This flexible architecture lets you deploy computation to one
-or more CPUs or GPUs in a desktop, server, or mobile device without rewriting
-code.  TensorFlow also includes TensorBoard, a data visualization toolkit.
+You can choose to run it standalone but functioanlity will be limited. Please see this https://www.hackster.io/asadzia/pre-collision-assist-with-pedestrian-detection-honda-civic-db91cb
+for information on setting up other parts.
 
-TensorFlow was originally developed by researchers and engineers
-working on the Google Brain team within Google's Machine Intelligence research
-organization for the purposes of conducting machine learning and deep neural
-networks research.  The system is general enough to be applicable in a wide
-variety of other domains, as well.
+Pick your preferred approach below. At the moment, we have full support for
+Bazel, and partial support for gradle, cmake, make, and Android Studio.
 
-**If you'd like to contribute to TensorFlow, be sure to review the [contribution
-guidelines](CONTRIBUTING.md).**
+As a first step for all build types, clone the TensorFlow repo with:
 
-**We use [GitHub issues](https://github.com/tensorflow/tensorflow/issues) for
-tracking requests and bugs, but please see
-[Community](tensorflow/docs_src/about/index.md#community) for general questions
-and discussion.**
-
-## Installation
-*See [Installing TensorFlow](https://www.tensorflow.org/install/) for instructions on how to install our release binaries or how to build from source.*
-
-People who are a little more adventurous can also try our nightly binaries:
-
-* Linux CPU-only: [Python 2](https://ci.tensorflow.org/view/Nightly/job/nightly-matrix-cpu/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON2,label=cpu-slave/lastSuccessfulBuild/artifact/pip_test/whl/tensorflow-1.1.0rc1-cp27-none-linux_x86_64.whl) ([build history](https://ci.tensorflow.org/view/Nightly/job/nightly-matrix-cpu/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON2,label=cpu-slave)) / [Python 3.4](https://ci.tensorflow.org/view/Nightly/job/nightly-matrix-cpu/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON3,label=cpu-slave/lastSuccessfulBuild/artifact/pip_test/whl/tensorflow-1.1.0rc1-cp34-cp34m-linux_x86_64.whl) ([build history](https://ci.tensorflow.org/view/Nightly/job/nightly-matrix-cpu/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON3,label=cpu-slave/)) / [Python 3.5](https://ci.tensorflow.org/view/Nightly/job/nightly-python35-linux-cpu/lastSuccessfulBuild/artifact/pip_test/whl/tensorflow-1.1.0rc1-cp35-cp35m-linux_x86_64.whl) ([build history](https://ci.tensorflow.org/view/Nightly/job/nightly-python35-linux-cpu/))
-* Linux GPU: [Python 2](https://ci.tensorflow.org/view/Nightly/job/nightly-matrix-linux-gpu/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON2,label=gpu-linux/lastSuccessfulBuild/artifact/pip_test/whl/tensorflow_gpu-1.1.0rc1-cp27-none-linux_x86_64.whl) ([build history](https://ci.tensorflow.org/view/Nightly/job/nightly-matrix-linux-gpu/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON2,label=gpu-linux/)) / [Python 3.4](https://ci.tensorflow.org/view/Nightly/job/nightly-matrix-linux-gpu/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON3,label=gpu-linux/lastSuccessfulBuild/artifact/pip_test/whl/tensorflow_gpu-1.1.0rc1-cp34-cp34m-linux_x86_64.whl) ([build history](https://ci.tensorflow.org/view/Nightly/job/nightly-matrix-linux-gpu/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON3,label=gpu-linux/)) / [Python 3.5](https://ci.tensorflow.org/view/Nightly/job/nightly-matrix-linux-gpu/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON3.5,label=gpu-linux/lastSuccessfulBuild/artifact/pip_test/whl/tensorflow_gpu-1.1.0rc1-cp35-cp35m-linux_x86_64.whl) ([build history](https://ci.tensorflow.org/view/Nightly/job/nightly-matrix-linux-gpu/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON3.5,label=gpu-linux/))
-* Mac CPU-only: [Python 2](https://ci.tensorflow.org/view/Nightly/job/nightly-matrix-cpu/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON2,label=mac-slave/lastSuccessfulBuild/artifact/pip_test/whl/tensorflow-1.1.0rc1-py2-none-any.whl) ([build history](https://ci.tensorflow.org/view/Nightly/job/nightly-matrix-cpu/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON2,label=mac-slave/)) / [Python 3](https://ci.tensorflow.org/view/Nightly/job/nightly-matrix-cpu/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON3,label=mac-slave/lastSuccessfulBuild/artifact/pip_test/whl/tensorflow-1.1.0rc1-py3-none-any.whl) ([build history](https://ci.tensorflow.org/view/Nightly/job/nightly-matrix-cpu/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON3,label=mac-slave/))
-* Mac GPU: [Python 2](https://ci.tensorflow.org/view/Nightly/job/nightly-matrix-mac-gpu/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON2,label=gpu-mac/lastSuccessfulBuild/artifact/pip_test/whl/tensorflow_gpu-1.1.0rc1-py2-none-any.whl) ([build history](https://ci.tensorflow.org/view/Nightly/job/nightly-matrix-mac-gpu/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON2,label=gpu-mac/)) / [Python 3](https://ci.tensorflow.org/view/Nightly/job/nightly-matrix-mac-gpu/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON3,label=gpu-mac/lastSuccessfulBuild/artifact/pip_test/whl/tensorflow_gpu-1.1.0rc1-py3-none-any.whl) ([build history](https://ci.tensorflow.org/view/Nightly/job/nightly-matrix-mac-gpu/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON3,label=gpu-mac/))
-* Windows CPU-only: [Python 3.5 64-bit](https://ci.tensorflow.org/view/Nightly/job/nightly-win/DEVICE=cpu,OS=windows/lastSuccessfulBuild/artifact/cmake_build/tf_python/dist/tensorflow-1.1.0rc1-cp35-cp35m-win_amd64.whl) ([build history](https://ci.tensorflow.org/view/Nightly/job/nightly-win/DEVICE=cpu,OS=windows/))
-* Windows GPU: [Python 3.5 64-bit](https://ci.tensorflow.org/view/Nightly/job/nightly-win/DEVICE=gpu,OS=windows/lastSuccessfulBuild/artifact/cmake_build/tf_python/dist/tensorflow_gpu-1.1.0rc1-cp35-cp35m-win_amd64.whl) ([build history](https://ci.tensorflow.org/view/Nightly/job/nightly-win/DEVICE=gpu,OS=windows/))
-* Android: [demo APK](https://ci.tensorflow.org/view/Nightly/job/nightly-android/lastSuccessfulBuild/artifact/out/tensorflow_demo.apk), [native libs](http://ci.tensorflow.org/view/Nightly/job/nightly-android/lastSuccessfulBuild/artifact/out/native/)
-([build history](https://ci.tensorflow.org/view/Nightly/job/nightly-android/))
-
-#### *Try your first TensorFlow program*
-```shell
-$ python
 ```
-```python
->>> import tensorflow as tf
->>> hello = tf.constant('Hello, TensorFlow!')
->>> sess = tf.Session()
->>> sess.run(hello)
-Hello, TensorFlow!
->>> a = tf.constant(10)
->>> b = tf.constant(32)
->>> sess.run(a+b)
-42
->>>
+git clone --recurse-submodules https://github.com/tensorflow/tensorflow.git
 ```
 
-## For more information
+Note that `--recurse-submodules` is necessary to prevent some issues with
+protobuf compilation.
 
-* [TensorFlow website](https://tensorflow.org)
-* [TensorFlow whitepaper](http://download.tensorflow.org/paper/whitepaper2015.pdf)
-* [TensorFlow Model Zoo](https://github.com/tensorflow/models)
-* [TensorFlow MOOC on Udacity](https://www.udacity.com/course/deep-learning--ud730)
+### Bazel
 
-The TensorFlow community has created amazing things with TensorFlow, please see the [resources section of tensorflow.org](https://www.tensorflow.org/about/#community) for an incomplete list.
+NOTE: Bazel does not currently support building for Android on Windows. Full
+support for gradle/cmake builds is coming soon, but in the meantime we suggest
+that Windows users download the
+[prebuilt binaries](https://ci.tensorflow.org/view/Nightly/job/nightly-android/)
+instead.
+
+##### Install Bazel and Android Prerequisites
+
+Bazel is the primary build system for TensorFlow. To build with Bazel,
+it and the Android NDK and SDK must be installed on your system.
+
+1. Install the latest version of Bazel as per the instructions [on the Bazel website](https://bazel.build/versions/master/docs/install.html).
+2. The Android NDK is required to build the native (C/C++) TensorFlow code.
+        The current recommended version is 12b, which may be found
+        [here](https://developer.android.com/ndk/downloads/older_releases.html#ndk-12b-downloads).
+3. The Android SDK and build tools may be obtained
+        [here](https://developer.android.com/tools/revisions/build-tools.html),
+        or alternatively as part of
+        [Android Studio](https://developer.android.com/studio/index.html). Build
+        tools API >= 23 is required to build the TF Android demo (though it will
+        run on API >= 21 devices).
+
+##### Edit WORKSPACE
+
+The Android entries in [`<workspace_root>/WORKSPACE`](../../../WORKSPACE#L19-L32)
+must be uncommented with the paths filled in appropriately depending on where
+you installed the NDK and SDK. Otherwise an error such as:
+"The external label '//external:android/sdk' is not bound to anything" will
+be reported.
+
+Also edit the API levels for the SDK in WORKSPACE to the highest level you
+have installed in your SDK. This must be >= 23 (this is completely independent
+of the API level of the demo, which is defined in AndroidManifest.xml).
+The NDK API level may remain at 14.
+
+##### Install Model Files (optional)
+
+The TensorFlow `GraphDef`s that contain the model definitions and weights
+are not packaged in the repo because of their size. They are downloaded
+automatically and packaged with the APK by Bazel via a new_http_archive defined
+in `WORKSPACE` during the build process, and by Gradle via download-models.gradle.
+
+**Optional**: If you wish to place the models in your assets manually,
+remove all of the `model_files` entries from the `assets`
+list in `tensorflow_demo` found in the `[BUILD](BUILD)` file. Then download
+and extract the archives yourself to the `assets` directory in the source tree:
+
+```bash
+BASE_URL=https://storage.googleapis.com/download.tensorflow.org/models
+for MODEL_ZIP in inception5h.zip mobile_multibox_v1a.zip stylize_v1.zip
+do
+  curl -L ${BASE_URL}/${MODEL_ZIP} -o /tmp/${MODEL_ZIP}
+  unzip /tmp/${MODEL_ZIP} -d tensorflow/examples/android/assets/
+done
+```
+
+This will extract the models and their associated metadata files to the local
+assets/ directory.
+
+If you are using Gradle, make sure to remove download-models.gradle reference
+from build.gradle after your manually download models; otherwise gradle
+might download models again and overwrite your models.
+
+##### Build
+
+After editing your WORKSPACE file to update the SDK/NDK configuration,
+you may build the APK. Run this from your workspace root:
+
+```bash
+bazel build -c opt //tensorflow/examples/android:tensorflow_demo
+```
+
+If you get build errors about protocol buffers, run
+`git submodule update --init` and make sure that you've modified your WORKSPACE
+file as instructed, then try building again.
+
+##### Install
+
+Make sure that adb debugging is enabled on your Android 5.0 (API 21) or
+later device, then after building use the following command from your workspace
+root to install the APK:
+
+```bash
+adb install -r bazel-bin/tensorflow/examples/android/tensorflow_demo.apk
+```
+
+### Android Studio
+
+Android Studio may be used to build the demo in conjunction with Bazel. First,
+make sure that you can build with Bazel following the above directions. Then,
+look at [build.gradle](build.gradle) and make sure that the path to Bazel
+matches that of your system.
+
+At this point you can add the tensorflow/examples/android directory as a new
+Android Studio project. Click through installing all the Gradle extensions it
+requests, and you should be able to have Android Studio build the demo like any
+other application (it will call out to Bazel to build the native code with the
+NDK).
+
+### CMake
+
+Full CMake support for the demo is coming soon, but for now it is possible to
+build the TensorFlow Android Inference library using
+[tensorflow/contrib/android/cmake](../../../tensorflow/contrib/android/cmake).
