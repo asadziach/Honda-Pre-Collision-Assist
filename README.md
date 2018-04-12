@@ -1,15 +1,16 @@
-<div align="center">
-  <img src="https://hackster.imgix.net/uploads/attachments/303966/slide2_a8X7ZX2dvn.PNG"><br><br>
-</div>
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_CD6F0BFAF3C051E7D75D8F09642719DD707017E279FFC8AAA1FEDFE15EFDAE86_1523563964750_honda.png)
 
 
 **[Pre-Collision Assist with Pedestrian Detection - Honda Civic](https://www.hackster.io/asadzia/pre-collision-assist-with-pedestrian-detection-honda-civic-db91cb)**
 
 Combine real-time hazard detection and classification from Camera with [Walabot](https://walabot.com/) RF radar, powered by TensorFlow with YOLO approach.
 
+![](https://hackster.imgix.net/uploads/attachments/303966/slide2_a8X7ZX2dvn.PNG)
+
 -----------------
 
-|## Building the Android Applictaion from Source
+## Building the Android Applictaion from Source
 
 You can choose to run it standalone but functioanlity will be limited. Please see this https://www.hackster.io/asadzia/pre-collision-assist-with-pedestrian-detection-honda-civic-db91cb
 for information on setting up other parts.
